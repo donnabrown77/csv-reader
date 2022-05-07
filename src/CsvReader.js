@@ -2,14 +2,13 @@ import { useState } from "react";
 
 function DisplayTable(props) {
   const items = props.value;
+
   return (
     <table>
       <tbody>
         {items.map((item, index) => (
           <tr key={index}>
-            {Object.keys(item).map((key) => (
-              <td>{item[key]}</td>
-            ))}
+            <td>{item}</td>
           </tr>
         ))}
       </tbody>
