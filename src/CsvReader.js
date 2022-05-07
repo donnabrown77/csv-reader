@@ -7,10 +7,9 @@ function DisplayTable(props) {
       <tbody>
         {items.map((item, index) => (
           <tr key={index}>
-            {/* <td>{item[index]}</td> */}
-            {Object.keys(item).map((key) => ({
+            {Object.keys(item).map((key) => (
               <td>{item[key]}</td>
-            }))}
+            ))}
           </tr>
         ))}
       </tbody>
