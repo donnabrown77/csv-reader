@@ -1,27 +1,23 @@
+import React from "react";
 import { useState } from "react";
+import DisplayTable from "./DisplayTable";
 
-function DisplayTable(props) {
-  const items = props.value;
+// TODO
+// clear output after loading new file
+// display using css grid
 
-  return (
-    <table>
-      <tbody>
-        {items.map((item, index) => (
-          <tr key={index}>
-            <td>{item}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
-}
-
-export default function CsvReader() {
-  const [csvFile, setCsvFile] = useState();
+const CsvReader = () => {
+  const [csvFile, setCsvFile] = useState(null);
   const [csvArray, setCsvArray] = useState([]);
 
-  const processCSV = (str, delim = ",") => {
-    const rows = str.split("\n");
+  const processCSV = (str) => {
+    let rows = str.split("\n");
+
+    // remove comma
+    rows = rows.map(function (row) {
+      return row.replace(/,/g, " ");
+    });
+
     setCsvArray(rows);
   };
 
@@ -58,4 +54,6 @@ export default function CsvReader() {
       <DisplayTable value={csvArray} />
     </div>
   );
-}
+};
+
+export default CsvReader;
