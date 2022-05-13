@@ -2,8 +2,17 @@ import React from "react";
 
 const Table = (props) => {
   let body = props.body;
+  let heading = props.heading;
+
   return (
     <table>
+      <thead>
+        <tr>
+          {heading.map((head) => (
+            <th>{head}</th>
+          ))}
+        </tr>
+      </thead>
       <tbody>
         {body.map((row) => (
           <TableRow row={row} />
@@ -31,11 +40,7 @@ const DisplayTable = (props) => {
     return value.split(" ");
   });
 
-  return (
-    <Table body={rows}>
-      <TableRow></TableRow>
-    </Table>
-  );
+  return <Table body={rows} heading={rows[0]}></Table>;
 };
 
 export default DisplayTable;
