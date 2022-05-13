@@ -1,4 +1,5 @@
 import React from "react";
+import "./DisplayTable.css";
 
 const Table = (props) => {
   let body = props.body;
@@ -7,8 +8,10 @@ const Table = (props) => {
   return (
     <table>
       <thead>
-        <tr key={heading}>
-          <th>{heading}</th>
+        <tr>
+          {heading.map((head) => (
+            <th>{head}</th>
+          ))}
         </tr>
       </thead>
       <tbody>
@@ -38,7 +41,10 @@ const DisplayTable = (props) => {
     return value.split(" ");
   });
 
-  return <Table body={rows} heading={rows[0]}></Table>;
+  // take first row off to make table headings
+  const headings = rows.shift();
+
+  return <Table body={rows} heading={headings}></Table>;
 };
 
 export default DisplayTable;
