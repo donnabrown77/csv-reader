@@ -8,7 +8,7 @@ import DisplayTable from "./DisplayTable";
 
 const CsvReader = () => {
   const [csvFile, setCsvFile] = useState(null);
-  const [csvArray, setCsvArray] = useState({});
+  const [csvArray, setCsvArray] = useState([]);
 
   const processCSV = (str) => {
     let rows = str.split("\n");

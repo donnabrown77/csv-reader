@@ -7,10 +7,8 @@ const Table = (props) => {
   return (
     <table>
       <thead>
-        <tr>
-          {heading.map((head) => (
-            <th>{head}</th>
-          ))}
+        <tr key={heading}>
+          <th>{heading}</th>
         </tr>
       </thead>
       <tbody>
@@ -25,7 +23,7 @@ const Table = (props) => {
 const TableRow = (props) => {
   let row = props.row;
   return (
-    <tr>
+    <tr key={row}>
       {row.map((val) => (
         <td>{val}</td>
       ))}
