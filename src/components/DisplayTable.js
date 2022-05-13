@@ -7,13 +7,13 @@ const Table = (props) => {
 
   return (
     <table>
-      <thead>
+      {/* <thead>
         <tr>
           {heading.map((head) => (
             <th>{head}</th>
           ))}
         </tr>
-      </thead>
+      </thead> */}
       <tbody>
         {body.map((row) => (
           <TableRow row={row} />
