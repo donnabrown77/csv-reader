@@ -3,12 +3,12 @@ import { useState } from "react";
 import DisplayTable from "./DisplayTable";
 
 // TODO
-// clear output after loading new file
+// add header
 // display using css grid
 
 const CsvReader = () => {
   const [csvFile, setCsvFile] = useState(null);
-  const [csvArray, setCsvArray] = useState([]);
+  const [csvArray, setCsvArray] = useState({});
 
   const processCSV = (str) => {
     let rows = str.split("\n");
@@ -17,7 +17,6 @@ const CsvReader = () => {
     rows = rows.map(function (row) {
       return row.replace(/,/g, " ");
     });
-
     setCsvArray(rows);
   };
 
@@ -45,7 +44,7 @@ const CsvReader = () => {
       <button
         onClick={(e) => {
           e.preventDefault();
-          if (csvFile) handleFileUpload();
+          handleFileUpload();
         }}
       >
         Submit

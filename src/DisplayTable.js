@@ -1,33 +1,40 @@
 import React from "react";
 
-const DisplayTable = (props) => {
-  const items = props.value;
-  // console.log(items);
-  //   items.map((item, index) => {
-  //     const rowArray = item.split(" ");
-  //     rowArray.forEach((element) => {
-  //       console.log(element);
-  //     });
-  //   });
-  // };
+const Table = (props) => {
+  let body = props.body;
   return (
     <table>
       <tbody>
-        {items.map((item, index) => {
-          {
-            const rowArray = item.split(" ");
-            <tr key={index}>
-              {rowArray.forEach((element) => (
-                <td>
-                  {element}
-                  {console.log(element)}
-                </td>
-              ))}
-            </tr>;
-          }
-        })}
+        {body.map((row) => (
+          <TableRow row={row} />
+        ))}
       </tbody>
     </table>
+  );
+};
+
+const TableRow = (props) => {
+  let row = props.row;
+  return (
+    <tr>
+      {row.map((val) => (
+        <td>{val}</td>
+      ))}
+    </tr>
+  );
+};
+
+const DisplayTable = (props) => {
+  const items = props.value;
+
+  const rows = Object.entries(items).map(([key, value]) => {
+    return value.split(" ");
+  });
+
+  return (
+    <Table body={rows}>
+      <TableRow></TableRow>
+    </Table>
   );
 };
 
