@@ -54,14 +54,14 @@ const DisplayTable = (props) => {
   body.shift();
 
   // get first row off to make table headings
-  const heading = props.value[0];
-  let headers;
-  if (heading) {
-    headers = heading.split(" ");
+  const firstRow = props.value[0];
+  let heading;
+  if (firstRow) {
+    heading = firstRow.split(" ");
   }
 
   // make an array of strings
-  return <Table body={body} heading={headers}></Table>;
+  return <Table body={body} heading={heading}></Table>;
 };
 
 export default DisplayTable;
