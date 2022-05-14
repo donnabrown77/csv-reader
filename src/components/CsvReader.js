@@ -2,10 +2,6 @@ import React from "react";
 import { useState } from "react";
 import DisplayTable from "./DisplayTable";
 
-// TODO
-// add header
-// display using css grid
-
 const CsvReader = () => {
   const [csvFile, setCsvFile] = useState(null);
   const [csvArray, setCsvArray] = useState([]);
