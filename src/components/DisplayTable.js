@@ -9,8 +9,8 @@ const Table = (props) => {
     <table>
       <TableHeader heading={heading} />
       <tbody>
-        {body.map((row) => (
-          <TableRow row={row} />
+        {body.map((row, index) => (
+          <TableRow key={index} row={row} />
         ))}
       </tbody>
     </table>
@@ -21,9 +21,8 @@ const TableRow = (props) => {
   let row = props.row;
   return (
     <tr key={row}>
-      {/* TODO */}
-      {row.map((val) => (
-        <td>{val}</td>
+      {row.map((val, index) => (
+        <td key={index}>{val}</td>
       ))}
     </tr>
   );
@@ -35,8 +34,8 @@ const TableHeader = (props) => {
     return (
       <thead>
         <tr>
-          {heading.map((head) => (
-            <th>{head}</th>
+          {heading.map((head, index) => (
+            <th key={index}>{head}</th>
           ))}
         </tr>
       </thead>
