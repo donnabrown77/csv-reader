@@ -7,13 +7,7 @@ const Table = (props) => {
 
   return (
     <table>
-      {/* <thead>
-        <tr>
-          {heading.map((head) => (
-            <th>{head}</th>
-          ))}
-        </tr>
-      </thead> */}
+      <TableHeader heading={heading} />
       <tbody>
         {body.map((row) => (
           <TableRow row={row} />
@@ -27,6 +21,7 @@ const TableRow = (props) => {
   let row = props.row;
   return (
     <tr key={row}>
+      {/* TODO */}
       {row.map((val) => (
         <td>{val}</td>
       ))}
@@ -34,17 +29,39 @@ const TableRow = (props) => {
   );
 };
 
-const DisplayTable = (props) => {
-  const items = props.value;
+const TableHeader = (props) => {
+  let heading = props.heading;
+  if (heading) {
+    return (
+      <thead>
+        <tr>
+          {heading.map((head) => (
+            <th>{head}</th>
+          ))}
+        </tr>
+      </thead>
+    );
+  }
+};
 
-  const rows = Object.entries(items).map(([key, value]) => {
+const DisplayTable = (props) => {
+  // convert each row of csv data to an array of rows
+  const body = Object.entries(props.value).map(([key, value]) => {
     return value.split(" ");
   });
 
-  // take first row off to make table headings
-  const headings = rows.shift();
+  // take first row off to get table data
+  body.shift();
 
-  return <Table body={rows} heading={headings}></Table>;
+  // get first row off to make table headings
+  const heading = props.value[0];
+  let headers;
+  if (heading) {
+    headers = heading.split(" ");
+  }
+
+  // make an array of strings
+  return <Table body={body} heading={headers}></Table>;
 };
 
 export default DisplayTable;
