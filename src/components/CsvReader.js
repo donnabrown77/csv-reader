@@ -3,10 +3,14 @@ import { useState } from "react";
 import DisplayTable from "./DisplayTable";
 
 const CsvReader = () => {
+  // save the input file name to a state variable
   const [csvFile, setCsvFile] = useState(null);
+  // save the file data to a state variable
+  // so the DisplayTable component can use it
   const [csvArray, setCsvArray] = useState([]);
 
   const processCSV = (str) => {
+    // split the file data into rows from the newline character
     let rows = str.split("\n");
 
     // remove comma
