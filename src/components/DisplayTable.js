@@ -44,7 +44,7 @@ const TableHeader = (props) => {
 };
 
 const DisplayTable = (props) => {
-  // convert each row of csv data to an array of rows
+  // convert each row of data to an array of rows
   const body = Object.entries(props.value).map(([key, value]) => {
     return value.split(" ");
   });
