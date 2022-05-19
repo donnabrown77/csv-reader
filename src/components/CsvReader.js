@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import DisplayTable from "./DisplayTable";
 
@@ -9,18 +9,24 @@ const CsvReader = () => {
   // so the DisplayTable component can use it
   const [csvArray, setCsvArray] = useState([]);
 
-  const processCSV = (str) => {
+  const processCSV = (text) => {
     // split the file data into rows from the newline character
-    let rows = str.split("\n");
+    console.log(text)
+    let rows = text.split("\n");
 
     // remove comma
     rows = rows.map(function (row) {
-      return row.replace(/,/g, " ");
+      
+      return row.replace(/,/g, "  ");
     });
-    setCsvArray(rows);
+    setCsvArray(rows );
+    
   };
 
+  useEffect(() => console.log(csvArray) , [csvArray])
+
   const handleFileUpload = () => {
+    
     const file = csvFile;
     const reader = new FileReader();
 

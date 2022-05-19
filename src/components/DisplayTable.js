@@ -46,7 +46,7 @@ const TableHeader = (props) => {
 const DisplayTable = (props) => {
   // convert each row of data to an array of rows
   const body = Object.entries(props.value).map(([key, value]) => {
-    return value.split(" ");
+    return value.split("  ");
   });
 
   // take first row off to get table data
@@ -56,7 +56,7 @@ const DisplayTable = (props) => {
   const firstRow = props.value[0];
   let heading;
   if (firstRow) {
-    heading = firstRow.split(" ");
+    heading = firstRow.split("  ");
   }
 
   // make an array of strings

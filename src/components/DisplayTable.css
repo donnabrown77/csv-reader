@@ -1,3 +1,7 @@
-td {
-  text-align: right;
+tr {
+  text-align: left;
 }
+
+th {
+  min-width: 155px;
+} 
